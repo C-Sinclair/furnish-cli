@@ -1,3 +1,24 @@
-import * as program from "commander";
+import * as program from 'commander'
+import * as package from '../package.json'
+import path from 'path'
 
-program.option("-s <file>", "--save <file>");
+program.version(package.version)
+
+program.command('save [env]')
+	.description('Save all relevant files in this dir to your config repo')
+	.option('-f <file>', '--file <file>', 'Save a specific file to your config repo')
+	.action((env, options) => {
+		console.log('Uploading your furnishings...')
+		env = env || './'
+		const file = options.file ? path.resolve(env, options.file) : path.resolve(env)
+	})
+
+program.command('* [env]')
+	.description('Download your config in this dir')
+	.action(env => {
+		console.log('Furnishing your dir...')
+		env = env || './'
+		const file = options.file ? path.resolve(env, options.file) : path.resolve(env)
+	})
+
+program.parse(process.argv)
