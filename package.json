@@ -1,0 +1,9 @@
+{
+  "name": "furnish-cli",
+  "version": "0.0.1",
+  "description": "A CLI tool to furnish your project with personalised config",
+  "main": "index.js",
+  "repository": "https://github.com/C-Sinclair/furnish-cli.git",
+  "author": "<conor@wilxite.com>",
+  "license": "MIT"
+}
