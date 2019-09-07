@@ -1,32 +1,37 @@
 {
-  "name": "furnish-cli",
-  "version": "0.0.1",
-  "description": "A CLI tool to furnish your project with personalised config",
-  "main": "lib/index.umd.js",
-  "module": "lib/index.es.js",
-  "bin": "lib/index.cjs.js",
-  "files": [
-    "lib"
-  ],
-  "repository": "https://github.com/C-Sinclair/furnish-cli.git",
-  "author": "<conor@wilxite.com>",
-  "license": "MIT",
-  "dependencies": {
-    "@octokit/rest": "^16.28.9",
-    "chalk": "^2.4.2",
-    "clear": "^0.1.0",
-    "clui": "^0.3.6",
-    "commander": "^2.20.0",
-    "configstore": "^5.0.0",
-    "figlet": "^1.2.4",
-    "inquirer": "^7.0.0",
-    "lodash": "^4.17.15",
-    "minimist": "^1.2.0",
-    "simple-git": "^1.126.0"
-  },
-  "devDependencies": {
-    "rollup": "^1.14.3",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-node-resolve": "^5.0.1"
-  }
+	"name": "furnish-cli",
+	"version": "0.0.1",
+	"description": "A CLI tool to furnish your project with personalised config",
+	"main": "lib/index.umd.js",
+	"module": "lib/index.es.js",
+	"bin": "lib/index.cjs.js",
+	"files": [
+		"lib"
+	],
+	"repository": "https://github.com/C-Sinclair/furnish-cli.git",
+	"author": "<conor@wilxite.com>",
+	"license": "MIT",
+	"dependencies": {
+		"@babel/core": "^7.6.0",
+		"@octokit/rest": "^16.28.9",
+		"chalk": "^2.4.2",
+		"clear": "^0.1.0",
+		"clui": "^0.3.6",
+		"commander": "^2.20.0",
+		"configstore": "^5.0.0",
+		"figlet": "^1.2.4",
+		"inquirer": "^7.0.0",
+		"lodash": "^4.17.15",
+		"rollup-plugin-commonjs": "^10.1.0",
+		"rollup-plugin-json": "^4.0.0",
+		"simple-git": "^1.126.0"
+	},
+	"devDependencies": {
+		"rollup": "^1.14.3",
+		"rollup-plugin-babel": "^4.3.2",
+		"rollup-plugin-node-resolve": "^5.0.1"
+	},
+	"scripts": {
+		"start": "rollup -c rollup.config.js src/index.js"
+	}
 }

@@ -1,11 +1,10 @@
 import * as program from 'commander'
-import * as package from '../package.json'
+import { version } from '../package.json'
 import path from 'path'
 import clear from 'clear'
 import chalk from 'chalk'
 import figlet from 'figlet'
 import { pwd, fileExists } from './util/files'
-import { askLoginCreds } from './util/auth'
 import { getToken, setCredentials, registerToken } from './util/github.js'
 
 clear()
@@ -25,7 +24,7 @@ const auth = async () => {
 	}
 }
 
-program.version(package.version)
+program.version(version)
 
 program
 	.command('save [env]')
@@ -54,9 +53,11 @@ program
 	.command('* [env]')
 	.description('Download your config in this dir')
 	.action(env => {
-		console.log('Furnishing your dir...')
-		env = env || './'
-		const file = options.file ? path.resolve(env, options.file) : path.resolve(env)
+		auth().then(() => {
+			console.log('Furnishing your dir...')
+			env = env || './'
+			const file = options.file ? path.resolve(env, options.file) : path.resolve(env)
+		})
 	})
 
 program.parse(process.argv)

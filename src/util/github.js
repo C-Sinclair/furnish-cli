@@ -8,12 +8,12 @@ const store = new Store('furnish')
 
 export const getToken = () => store.get('github.token')
 
-const setCredentials = async () => {
+export const setCredentials = async () => {
 	const creds = await askLoginCreds()
 	octokit.authenticate(extend({ type: 'basic' }, creds))
 }
 
-const registerToken = async () => {
+export const registerToken = async () => {
 	const status = new CLI.Spinner('Authenticating, please wait... ')
 	status.start()
 	try {
