@@ -1,3 +1,0 @@
-{
-  "presets": ["babel-preset-primavera", ["@babel/preset-react", { "pragma": "wisk" }]]
-}

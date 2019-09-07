@@ -13,7 +13,7 @@ insert_final_newline = true
 [*.{js,json,yml}]
 charset = utf-8
 indent_style = tab
-indent_size = 8
+indent_size = 4
 
 # Tab indentation (no size specified)
 [Makefile]
