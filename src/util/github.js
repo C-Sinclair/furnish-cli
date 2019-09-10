@@ -1,10 +1,11 @@
 import Store from 'configstore'
-import CLI from 'clui'
 import octokit from '@octokit/rest'
 import { extend } from 'lodash'
 import { askLoginCreds } from './auth'
 
 const store = new Store('furnish')
+
+export const octokit = () => octokit
 
 export const getToken = () => store.get('github.token')
 
@@ -14,8 +15,8 @@ export const setCredentials = async () => {
 }
 
 export const registerToken = async () => {
-	const status = new CLI.Spinner('Authenticating, please wait... ')
-	status.start()
+	// const status = new CLI.Spinner('Authenticating, please wait... ')
+	// status.start()
 	try {
 		const response = await octokit.authorization.create({
 			scopes: ['user', 'public_repo', 'repo', 'repo:status'],
@@ -31,6 +32,6 @@ export const registerToken = async () => {
 	} catch (error) {
 		throw error
 	} finally {
-		status.stop()
+		// status.stop()
 	}
 }
