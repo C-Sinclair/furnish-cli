@@ -11,7 +11,7 @@ export const addFileToFurnish = async file => {
 		await git(repoPath)
 			.add(file)
 			.commit(`${file} updated`)
-			.push('origin', 'master')
+			.push()
 		return true
 	} catch (err) {
 		console.error(err)

@@ -7,8 +7,9 @@ import clear from 'clear'
 import chalk from 'chalk'
 import figlet from 'figlet'
 import { pwd, fileExists } from './util/files'
-import { addFileToFurnish } from './util/localRepo'
+import { addFileToFurnish } from './actions/add'
 import { auth } from './util/auth'
+import { pullFromFurnish } from './actions/pull'
 
 clear()
 console.log(
@@ -51,7 +52,7 @@ program
 		auth().then(() => {
 			console.log('Furnishing your dir...')
 			env = env || './'
-			const file = options.file ? path.resolve(env, options.file) : path.resolve(env)
+			pullFromFurnish()
 		})
 	})
 
