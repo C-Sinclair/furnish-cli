@@ -1,23 +1,9 @@
-import inquirer from 'inquirer'
+import { getToken, setCredentials, registerToken } from './util/github.js'
 
-export const askLoginCreds = () => {
-	const questions = [
-		{
-			name: 'username',
-			type: 'input',
-			message: 'Enter your Github username or email',
-			validate: value => {
-				return value.length ? true : 'Please enter your username or email'
-			}
-		},
-		{
-			name: 'password',
-			type: 'password',
-			message: 'Enter your password:',
-			validate: value => {
-				return value.length ? true : 'Please enter your password.'
-			}
-		}
-	]
-	return inquirer.prompt(questions)
+export const auth = async () => {
+	let token = getToken()
+	if (!token) {
+		await setCredentials()
+		token = await registerToken()
+	}
 }

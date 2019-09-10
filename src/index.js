@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import * as program from 'commander'
 import { version } from '../package.json'
 import path from 'path'
@@ -5,7 +7,8 @@ import clear from 'clear'
 import chalk from 'chalk'
 import figlet from 'figlet'
 import { pwd, fileExists } from './util/files'
-import { getToken, setCredentials, registerToken } from './util/github.js'
+import { addFileToFurnish } from './util/localRepo'
+import { auth } from './util/auth'
 
 clear()
 console.log(
@@ -15,14 +18,6 @@ console.log(
 		})
 	)
 )
-
-const auth = async () => {
-	let token = getToken()
-	if (!token) {
-		await setCredentials()
-		token = await registerToken()
-	}
-}
 
 program.version(version)
 
@@ -35,11 +30,11 @@ program
 			console.log('Uploading your furnishings...')
 			env = env || pwd
 			const file = options.file ? path.resolve(env, options.file) : path.resolve(env)
-			if (fileExists(file)) {
-				// upload file
-			} else {
+			if (!fileExists(file)) {
 				console.error('File does not exist')
+				return
 			}
+			addFileToFurnish(file)
 		})
 	})
 

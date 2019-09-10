@@ -1,4 +1,5 @@
 import fs from 'fs'
+import os from 'os'
 import touch from 'touch'
 import parse from 'parse-gitignore'
 
@@ -20,3 +21,5 @@ const gitignore = () => {
 		return []
 	}
 }
+
+export const constructionRepoPath = () => `${os.homedir()}/.furnish/construction-site`
