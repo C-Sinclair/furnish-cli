@@ -1,24 +1,24 @@
 import Store from 'configstore'
-import octokit from '@octokit/rest'
-import { extend } from 'lodash'
-import { askLoginCreds } from './auth'
+import octo from '@octokit/rest'
+import extend from 'lodash/extend'
+import { askLoginCreds } from '../questions/login'
 
 const store = new Store('furnish')
 
-export const octokit = () => octokit
+export const octokit = () => octo
 
 export const getToken = () => store.get('github.token')
 
 export const setCredentials = async () => {
 	const creds = await askLoginCreds()
-	octokit.authenticate(extend({ type: 'basic' }, creds))
+	octo.authenticate(extend({ type: 'basic' }, creds))
 }
 
 export const registerToken = async () => {
 	// const status = new CLI.Spinner('Authenticating, please wait... ')
 	// status.start()
 	try {
-		const response = await octokit.authorization.create({
+		const response = await octo.authorization.create({
 			scopes: ['user', 'public_repo', 'repo', 'repo:status'],
 			note: 'Furnish, smooth conf management'
 		})

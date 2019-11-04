@@ -1,6 +1,6 @@
 import { octokit as github } from '../util/github'
 import git from 'simple-git'
-import { constructionRepoPath } from './files'
+import { constructionRepoPath } from '../util/files'
 import { copyFile, readdir, lstat, lstatSync } from 'fs'
 import { pwd } from '../util/files'
 

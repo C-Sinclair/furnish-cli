@@ -1,6 +1,6 @@
 import git from 'simple-git'
 import fs from 'fs'
-import { constructionRepoPath } from './files'
+import { constructionRepoPath } from '../util/files'
 
 export const addFileToFurnish = async file => {
 	console.log(`Construction site in use`)

@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import * as program from 'commander'
 import { version } from '../package.json'
 import path from 'path'
